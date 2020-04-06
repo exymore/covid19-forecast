@@ -1,9 +1,12 @@
 <template>
     <div id="app">
-        <toolbar/>
-        <Stats/>
-        <Select/>
-        <fill-data v-if="isStaleData"/>
+        <div class="wrapper">
+            <toolbar/>
+            <Stats/>
+            <Select/>
+            <fill-data v-if="isStaleData"/>
+        </div>
+        <disclaimer/>
     </div>
 </template>
 
@@ -12,6 +15,7 @@
   import Select from './components/Select';
   import FillData from './components/FillData';
   import Stats from './components/Stats';
+  import Disclaimer from './components/Disclaimer';
   import './assets/App.css';
 
   export default {
@@ -21,6 +25,7 @@
       Stats,
       Select,
       FillData,
+      Disclaimer
     },
 
     data: () => ({
@@ -32,7 +37,7 @@
 </script>
 
 <style scoped>
-    #app {
+    .wrapper {
         position: relative;
         top: 100px;
         background-color: white;
@@ -48,7 +53,7 @@
     }
 
     @media (max-width: 960px) {
-        #app {
+        .wrapper {
             top: 40px;
             width: 480px;
             max-width: 480px;
@@ -56,7 +61,7 @@
     }
 
     @media (max-width: 480px) {
-        #app {
+        .wrapper {
             top: 30px;
             width: 360px;
             max-width: 360px;
@@ -64,7 +69,7 @@
     }
 
     @media (max-width: 360px) {
-        #app {
+        .wrapper {
             top: 30px;
             width: 300px;
             max-width: 300px;
