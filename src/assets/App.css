@@ -25,4 +25,9 @@ section {
     }
 }
 
+.btn {
+    width: 150px;
+    font-weight: 600;
+}
+
 

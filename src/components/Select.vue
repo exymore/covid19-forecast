@@ -1,7 +1,7 @@
 <template>
     <section class="section">
         <h2 class="subtitle">
-            Choose your country:
+           Выберите Страну
         </h2>
         <b-field>
             <span class="icon">

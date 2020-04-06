@@ -3,7 +3,7 @@
         <template slot="brand">
             <b-navbar-item tag="div">
                 <div class="app-title">
-                    Covid-19 Forecast Model
+                    Прогноз Covid-19
                 </div>
             </b-navbar-item>
         </template>

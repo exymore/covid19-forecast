@@ -1,29 +1,29 @@
 <template>
     <section class="section">
         <h2 class="subtitle">
-            It seems data for today is missing yet. Do you want to enter it manually?
+            Похоже, что данные для сегодня отсутствуют. Вы хотите ввести их вручную?
         </h2>
 
         <div class="group">
-            <b-button class="btn" type="is-info">Yes</b-button>
-            <b-button class="btn">No</b-button>
+            <b-button class="btn" type="is-info">Да</b-button>
+            <b-button class="btn">Нет</b-button>
         </div>
 
         <div class="input-controls">
-            <b-field label="😷 Infected">
+            <b-field label="😷 Заражено">
                 <b-numberinput v-model="infected" type="is-info" controls-position="compact"
                                controls-rounded/>
             </b-field>
-            <b-field label="☠️ Dead">
+            <b-field label="☠️ Погибло">
                 <b-numberinput v-model="dead" type="is-info" controls-position="compact"
                                controls-rounded/>
             </b-field>
-            <b-field label="😊️ Recovered">
+            <b-field label="😊️ Выздоровело">
                 <b-numberinput v-model="recovered" type="is-info" controls-position="compact"
                                controls-rounded/>
             </b-field>
         </div>
-        <b-button type="is-primary" size="is-medium" class="submit">Get Forecast</b-button>
+        <b-button type="is-primary" size="is-medium" class="submit">Получить прогноз</b-button>
     </section>
 </template>
 
