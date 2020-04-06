@@ -5,17 +5,19 @@
         </h2>
         <b-button @click="hidden = !hidden" type="is-info" class="btn">{{ hidden? 'Показать':'Спрятать' }}</b-button>
 
-        <div v-if="!hidden" class="group">
-            <div class="stats">
-                <Card background-color="#FFEE58" text="Всего заражённых" :value="data.cases"/>
-                <Card background-color="#EF5350" color="#FFFFFF" text="Всего погибших" :value="data.deaths"/>
-                <Card background-color="#8BC34A" text="Всего выздоровевших" :value="data.recovered"/>
+        <b-collapse :open="!hidden" animation="slide">
+            <div class="group">
+                <div class="stats">
+                    <Card background-color="#FFEE58" text="Всего заражённых" :value="data.cases"/>
+                    <Card background-color="#EF5350" color="#FFFFFF" text="Всего погибших" :value="data.deaths"/>
+                    <Card background-color="#8BC34A" text="Всего выздоровевших" :value="data.recovered"/>
+                </div>
+                <div class="stats">
+                    <Card background-color="#FFEE58" text="Заражённых сегодня" :value="data.todayCases"/>
+                    <Card background-color="#EF5350" color="#FFFFFF" text="Погибших сегодня" :value="data.todayDeaths"/>
+                </div>
             </div>
-            <div class="stats">
-                <Card background-color="#FFEE58" text="Заражённых сегодня" :value="data.todayCases"/>
-                <Card background-color="#EF5350" color="#FFFFFF" text="Погибших сегодня" :value="data.todayDeaths"/>
-            </div>
-        </div>
+        </b-collapse>
     </section>
     <div v-else>
         <div class="left">
