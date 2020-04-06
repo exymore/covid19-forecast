@@ -25,7 +25,7 @@
       Stats,
       Select,
       FillData,
-      Disclaimer
+      Disclaimer,
     },
 
     data: () => ({
@@ -33,6 +33,8 @@
       csvData: null,
       isStaleData: true,
     }),
+
+    methods: {},
   };
 </script>
 

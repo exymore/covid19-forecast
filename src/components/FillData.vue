@@ -6,7 +6,7 @@
 
         <div class="group">
             <b-button class="btn">Да</b-button>
-            <b-button class="btn">Нет</b-button>
+            <b-button class="btn" @click="$parent.isStaleData = false">Нет</b-button>
         </div>
 
         <div class="input-controls">
@@ -54,7 +54,7 @@
 
     .input-controls >>> .label {
         font-weight: 400;
-        font-size: 1.125rem;
+        font-size: 1.25rem;
     }
 
     .group {

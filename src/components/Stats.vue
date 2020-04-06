@@ -12,9 +12,9 @@
                         Всего:
                     </h2>
                     <div class="stats">
-                        <Card background-color="#FFEE58" text="Всего заражённых" :value="data.cases"/>
-                        <Card background-color="#EF5350" color="#FFFFFF" text="Всего погибших" :value="data.deaths"/>
-                        <Card background-color="#8BC34A" text="Всего выздоровевших" :value="data.recovered"/>
+                        <Card v-for="card in statCardsOverall" :key="card.text" :background-color="card.bgColor"
+                              :color="card.color"
+                              :text="card.text" :value="card.value"/>
                     </div>
                 </div>
                 <div class="stat-section">
@@ -22,9 +22,9 @@
                         Сегодня:
                     </h2>
                     <div class="stats">
-                        <Card background-color="#FFEE58" text="Заражённых сегодня" :value="data.todayCases"/>
-                        <Card background-color="#EF5350" color="#FFFFFF" text="Погибших сегодня"
-                              :value="data.todayDeaths"/>
+                        <Card v-for="card in statCardsToday" :key="card.text" :background-color="card.bgColor"
+                              :color="card.color"
+                              :text="card.text" :value="card.value"/>
                     </div>
                 </div>
             </div>
@@ -32,13 +32,12 @@
     </section>
     <div v-else>
         <div class="left">
-            <Card background-color="#FFEE58" text="Всего заражённых" :value="data.cases"/>
-            <Card background-color="#EF5350" color="#FFFFFF" text="Всего погибших" :value="data.deaths"/>
-            <Card background-color="#8BC34A" text="Всего выздоровевших" :value="data.recovered"/>
+            <Card v-for="card in statCardsOverall" :key="card.text" :background-color="card.bgColor" :color="card.color"
+                  :text="card.text" :value="card.value"/>
         </div>
         <div class="right">
-            <Card background-color="#FFEE58" text="Заражённых сегодня" :value="data.todayCases"/>
-            <Card background-color="#EF5350" color="#FFFFFF" text="Погибших сегодня" :value="data.todayDeaths"/>
+            <Card v-for="card in statCardsToday" :key="card.text" :background-color="card.bgColor" :color="card.color"
+                  :text="card.text" :value="card.value"/>
         </div>
     </div>
 </template>
@@ -55,15 +54,65 @@
     data: () => ({
       data: {},
       hidden: true,
+      intervalId: () => {
+      },
     }),
     computed: {
       isMobile() {
         return document.documentElement.clientWidth <= 1520;
       },
+      statCardsOverall() {
+        return [
+          {
+            bgColor: '#FFEE58',
+            text: 'Всего заражённых',
+            value: this.data.cases,
+          },
+          {
+            bgColor: '#EF5350',
+            color: '#FFFFFF',
+            text: 'Всего погибших',
+            value: this.data.deaths,
+          },
+          {
+            bgColor: '#8BC34A',
+            text: 'Всего выздоровевших',
+            value: this.data.recovered,
+          },
+        ];
+      },
+      statCardsToday() {
+        return [
+          {
+            bgColor: '#FFEE58',
+            text: 'Заражённых сегодня',
+            value: this.data.todayCases,
+          },
+          {
+            bgColor: '#EF5350',
+            color: '#FFFFFF',
+            text: 'Погибших сегодня',
+            value: this.data.todayDeaths,
+          },
+        ];
+      },
     },
     async mounted() {
-      const { data } = await axios.get('https://corona.lmao.ninja/all');
-      this.data = data;
+      this.fetchData();
+
+      //Updates data each minute
+      this.intervalId = setInterval(async () => {
+        await this.fetchData();
+      }, 60000);
+    },
+    methods: {
+      async fetchData() {
+        const { data } = await axios.get('https://corona.lmao.ninja/all');
+        this.data = data;
+      },
+    },
+    destroyed() {
+      clearInterval(this.intervalId);
     },
   };
 </script>

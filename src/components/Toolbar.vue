@@ -9,10 +9,16 @@
         </template>
         <template slot="end">
             <b-navbar-item tag="div">
-                <b-button type="is-light" class="external-button">
-                    <a href="https://github.com/novelcovid/api" target="_blank" rel="noopener noreferrer"
+                <b-button class="external-button">
+                    <a href="https://www.who.int/ru/emergencies/diseases/novel-coronavirus-2019/advice-for-public" target="_blank" rel="noopener noreferrer"
                        class="external-link">
                         <div class="covid-emoji">🦠</div>
+                    </a>
+                </b-button>
+                <b-button class="external-button">
+                    <a href="https://molamola.by/campaigns?sort=popular&category_id=10" target="_blank" rel="noopener noreferrer"
+                       class="external-link">
+                        <div class="covid-emoji">💵</div>
                     </a>
                 </b-button>
             </b-navbar-item>
@@ -28,7 +34,7 @@
 
 <style scoped>
     .app-title {
-        font-weight: 600 !important;
+        font-weight: 700 !important;
         font-size: 24px !important;
     }
 
@@ -38,9 +44,18 @@
     }
 
     .external-button {
+        box-shadow: 0 1px 6px 0 rgba(60,64,67,.3);
+        background-color: white;
+        border: none;
         border-radius: 100%;
-        height: 64px;
-        width: 64px;
+        height: 60px;
+        width: 60px;
+        margin-right: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .external-button:hover {
+        box-shadow: 0 4px 12px 0 rgba(60,64,67,.3);
     }
 
     .external-link {
