@@ -1,24 +1,27 @@
 <template>
     <section class="section">
         <h2 class="subtitle">
-           Выберите Страну
+            Выберите Страну
         </h2>
         <b-field>
             <span class="icon">
                 🌍
             </span>
             <b-select placeholder="Country" v-model="country" rounded expanded>
-                <option value="Belarus">Belarus</option>
+                <option v-for="country in countriesEnum" :key="country" value="country">{{country}}</option>
             </b-select>
         </b-field>
     </section>
 </template>
 
 <script>
+  import countriesEnum from '../enums';
+
   export default {
     name: 'Select',
     data: () => ({
       country: '',
+      countriesEnum
     }),
   };
 </script>

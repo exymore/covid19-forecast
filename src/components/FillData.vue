@@ -5,7 +5,7 @@
         </h2>
 
         <div class="group">
-            <b-button class="btn" type="is-info">Да</b-button>
+            <b-button class="btn">Да</b-button>
             <b-button class="btn">Нет</b-button>
         </div>
 

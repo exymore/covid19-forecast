@@ -7,14 +7,25 @@
 
         <b-collapse :open="!hidden" animation="slide">
             <div class="group">
-                <div class="stats">
-                    <Card background-color="#FFEE58" text="Всего заражённых" :value="data.cases"/>
-                    <Card background-color="#EF5350" color="#FFFFFF" text="Всего погибших" :value="data.deaths"/>
-                    <Card background-color="#8BC34A" text="Всего выздоровевших" :value="data.recovered"/>
+                <div class="stat-section">
+                    <h2>
+                        Всего:
+                    </h2>
+                    <div class="stats">
+                        <Card background-color="#FFEE58" text="Всего заражённых" :value="data.cases"/>
+                        <Card background-color="#EF5350" color="#FFFFFF" text="Всего погибших" :value="data.deaths"/>
+                        <Card background-color="#8BC34A" text="Всего выздоровевших" :value="data.recovered"/>
+                    </div>
                 </div>
-                <div class="stats">
-                    <Card background-color="#FFEE58" text="Заражённых сегодня" :value="data.todayCases"/>
-                    <Card background-color="#EF5350" color="#FFFFFF" text="Погибших сегодня" :value="data.todayDeaths"/>
+                <div class="stat-section">
+                    <h2>
+                        Сегодня:
+                    </h2>
+                    <div class="stats">
+                        <Card background-color="#FFEE58" text="Заражённых сегодня" :value="data.todayCases"/>
+                        <Card background-color="#EF5350" color="#FFFFFF" text="Погибших сегодня"
+                              :value="data.todayDeaths"/>
+                    </div>
                 </div>
             </div>
         </b-collapse>
@@ -65,6 +76,7 @@
         justify-content: center;
         flex-direction: column;
     }
+
     .right {
         position: absolute;
         right: -280px;
@@ -72,6 +84,7 @@
         justify-content: center;
         flex-direction: column;
     }
+
     .section {
         padding-bottom: 0;
     }
@@ -95,10 +108,21 @@
         flex-wrap: wrap;
     }
 
+    .stat-section {
+        margin-top: 1rem;
+        font-size: 1rem;
+    }
+
     .group {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
-        justify-content: center;
+        justify-content: flex-start;
+    }
+
+    @media (max-width: 960px) {
+        .group {
+            justify-content: center;
+        }
     }
 </style>
