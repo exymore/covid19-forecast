@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap&subset=cyrillic');
+
+body {
+    font-family: 'Montserrat', sans-serif !important;
+    background: linear-gradient(#082a4e, #082a4ed1);
+    height: 100vh;
+}
+
+a,button {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.subtitle {
+    font-weight: 500 !important;
+    margin-bottom: 1rem !important;
+}
+
+section {
+    padding: 2rem 1.5rem !important;
+}
+
+@media (max-width: 960px) {
+    section {
+        padding: 1.25rem 1.5rem !important;
+    }
+}
+
+
