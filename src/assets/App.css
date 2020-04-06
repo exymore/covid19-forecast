@@ -2,8 +2,9 @@
 
 body {
     font-family: 'Montserrat', sans-serif !important;
-    background: linear-gradient(#082a4e, #082a4ed1);
-    height: 100vh;
+    background: linear-gradient(30deg, #082a4e, #082a4ed1);
+    height: 100%;
+    min-height: 100vh;
 }
 
 a,button {

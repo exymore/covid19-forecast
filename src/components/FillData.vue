@@ -11,15 +11,15 @@
 
         <div class="input-controls">
             <b-field label="😷 Заражено">
-                <b-numberinput v-model="infected" type="is-info" controls-position="compact"
+                <b-numberinput min="0" v-model="infected" type="is-info" controls-position="compact"
                                controls-rounded/>
             </b-field>
             <b-field label="☠️ Погибло">
-                <b-numberinput v-model="dead" type="is-info" controls-position="compact"
+                <b-numberinput min="0" v-model="dead" type="is-info" controls-position="compact"
                                controls-rounded/>
             </b-field>
             <b-field label="😊️ Выздоровело">
-                <b-numberinput v-model="recovered" type="is-info" controls-position="compact"
+                <b-numberinput min="0" v-model="recovered" type="is-info" controls-position="compact"
                                controls-rounded/>
             </b-field>
         </div>

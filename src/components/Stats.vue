@@ -45,7 +45,7 @@
     }),
     computed: {
       isMobile() {
-        return document.documentElement.clientWidth <= 1200;
+        return document.documentElement.clientWidth <= 1520;
       },
     },
     async mounted() {
@@ -57,15 +57,15 @@
 
 <style scoped>
     .left {
-        position: fixed;
-        left: 0;
+        position: absolute;
+        left: -280px;
         display: flex;
         justify-content: center;
         flex-direction: column;
     }
     .right {
-        position: fixed;
-        right: 0;
+        position: absolute;
+        right: -280px;
         display: flex;
         justify-content: center;
         flex-direction: column;
