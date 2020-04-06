@@ -1,6 +1,6 @@
 <template>
     <div class="message">
-        <b-message title="Дисклеймер" type="is-warning" has-icon aria-close-label="Close message">
+        <b-message title="Предупреждение" type="is-warning" has-icon aria-close-label="Close message">
             Данные, полученные приложением, являются прогнозом и не отражают действительность. День ото дня данные могут
             кардинально отличаться. Приложение предназначено для примерной оценки распространения пандемии по странам.
         </b-message>
