@@ -17,6 +17,8 @@
   import Stats from './components/Stats';
   import Disclaimer from './components/Disclaimer';
   import './assets/App.css';
+  import countriesEnum from './enums';
+  import axios from 'axios';
 
   export default {
     name: 'App',
@@ -30,11 +32,31 @@
 
     data: () => ({
       country: null,
+      countriesEnum,
       csvData: null,
-      isStaleData: true,
+      isStaleData: false,
     }),
 
-    methods: {},
+    watch: {
+      country() {
+        this.fetchCSVData();
+      },
+    },
+
+    methods: {
+      async fetchCSVData() {
+        if (this.country) {
+          if (countriesEnum.find(country => country === this.country)) {
+            const { data } = await axios.get(`${process.env.VUE_APP_API_BASE_URI}/forecast?country=${this.country}`);
+            this.csvData = data;
+          }
+          else {
+            //TODO: country missing
+            console.log("country missing")
+          }
+        }
+      },
+    },
   };
 </script>
 
