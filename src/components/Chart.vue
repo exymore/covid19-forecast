@@ -31,11 +31,11 @@
             series: [
               {
                 options: { emptyPointMode: 'default' },
-                name: 'Actual Infected',
+                name: 'Инфицировано',
                 points: this.getActualData(),
               },
               {
-                name: 'Infection Forecast',
+                name: 'Ожидается',
                 points: this.getForecastData(),
               },
             ],
@@ -47,7 +47,7 @@
           chart
             .axes('y')
             .markers(0)
-            .options({ label: { text: `Max Infections: ${numeral(this.getMaxInfections(this.csvData)).format('0,0')}` } });
+            .options({ label: { text: `Максимум заражённых: ${numeral(this.getMaxInfections(this.csvData)).format('0,0')}` } });
         },
         options: {
           type: 'line spline',
@@ -57,8 +57,12 @@
             position: 'outside top',
           },
           defaultPoint: {
-            marker_type: 'none',
             tooltip: '%seriesName: %yValue',
+            marker: {
+              type: 'circle',
+              size: 16,
+              outline: { color: 'white', width: 2 }
+            }
           },
           defaultSeries: { shape_opacity: 0.5 },
           series: [
@@ -90,12 +94,18 @@
             },
           ],
           xAxis: {
+            cultureName: 'ru',
             crosshair_enabled: true,
-            formatString: 'MMMM-dd',
+            formatString: 'M',
             scale: {
               type: 'time',
-              interval: { unit: 'month' },
             },
+            markers: [
+              {
+                value: new Date(),
+                legendEntry_visible: false
+              }
+            ]
           },
           toolbar_visible: false,
         },
@@ -114,7 +124,7 @@
             name: el.ds,
             y: Math.round(el.y),
             marker: {
-              size: 4,
+              size: 6,
             },
           }
         ));
@@ -124,7 +134,7 @@
             name: el.ds,
             y: Math.round(el.yhat_upper),
             marker: {
-              size: 4,
+              size: 6,
             },
           }
         ));
