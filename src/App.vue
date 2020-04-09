@@ -4,7 +4,8 @@
             <toolbar/>
             <Stats/>
             <Select/>
-            <fill-data v-if="isStaleData"/>
+            <fill-data v-show="isStaleData"/>
+            <chart :csv-data="csvData" :country="country" v-if="csvData"/>
         </div>
         <disclaimer/>
     </div>
@@ -16,6 +17,7 @@
   import FillData from './components/FillData';
   import Stats from './components/Stats';
   import Disclaimer from './components/Disclaimer';
+  import Chart from './components/Chart';
   import './assets/App.css';
   import countriesEnum from './enums';
   import axios from 'axios';
@@ -28,6 +30,7 @@
       Select,
       FillData,
       Disclaimer,
+      Chart,
     },
 
     data: () => ({
@@ -48,11 +51,10 @@
         if (this.country) {
           if (countriesEnum.find(country => country === this.country)) {
             const { data } = await axios.get(`${process.env.VUE_APP_API_BASE_URI}/forecast?country=${this.country}`);
-            this.csvData = data;
-          }
-          else {
+            this.csvData = [...data];
+          } else {
             //TODO: country missing
-            console.log("country missing")
+            console.log('country missing');
           }
         }
       },

@@ -10,7 +10,7 @@
     name: 'Card',
     props: {
       text: { type: String, default: '' },
-      value: { type: Number, default: 0 },
+      value: { type: String, default: '' },
       color: { type: String, default: '#4A4A4A' },
       backgroundColor: { type: String, default: '#FFFFFF' },
     },

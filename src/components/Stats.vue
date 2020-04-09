@@ -44,6 +44,7 @@
 
 <script>
   import axios from 'axios';
+  import numeral from 'numeral';
   import Card from './Card';
 
   export default {
@@ -66,18 +67,18 @@
           {
             bgColor: '#FFEE58',
             text: 'Всего заражённых',
-            value: this.data.cases,
+            value: numeral(this.data.cases).format('0,0'),
           },
           {
             bgColor: '#EF5350',
             color: '#FFFFFF',
             text: 'Всего погибших',
-            value: this.data.deaths,
+            value: numeral(this.data.deaths).format('0,0'),
           },
           {
             bgColor: '#8BC34A',
             text: 'Всего выздоровевших',
-            value: this.data.recovered,
+            value: numeral(this.data.recovered).format('0,0'),
           },
         ];
       },
@@ -86,19 +87,19 @@
           {
             bgColor: '#FFEE58',
             text: 'Заражённых сегодня',
-            value: this.data.todayCases,
+            value: numeral(this.data.todayCases).format('0,0'),
           },
           {
             bgColor: '#EF5350',
             color: '#FFFFFF',
             text: 'Погибших сегодня',
-            value: this.data.todayDeaths,
+            value: numeral(this.data.todayDeaths).format('0,0'),
           },
         ];
       },
     },
     async mounted() {
-      this.fetchData();
+      await this.fetchData();
 
       //Updates data each minute
       this.intervalId = setInterval(async () => {
