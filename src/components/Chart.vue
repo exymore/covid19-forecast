@@ -23,7 +23,6 @@
     },
     data() {
       return {
-        name: 'columnChart',
         updateData: () => {
           const chart = this.$refs.chart.instance;
           this.options = {
@@ -49,6 +48,7 @@
             .markers(0)
             .options({ label: { text: `Максимум заражённых: ${numeral(this.getMaxInfections(this.csvData)).format('0,0')}` } });
         },
+
         options: {
           type: 'line spline',
           palette: ['crimson', 'rgba(22,125,240,0.49)'],
@@ -102,7 +102,7 @@
             },
             markers: [
               {
-                value: new Date(),
+                value: new Date().toLocaleString().split(',')[0],
                 legendEntry_visible: false
               }
             ]

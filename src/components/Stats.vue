@@ -122,6 +122,7 @@
     .left {
         position: absolute;
         left: -280px;
+        top: -10px;
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -130,6 +131,7 @@
     .right {
         position: absolute;
         right: -280px;
+        top: -10px;
         display: flex;
         justify-content: center;
         flex-direction: column;

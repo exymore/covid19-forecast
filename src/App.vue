@@ -18,6 +18,7 @@
   import Stats from './components/Stats';
   import Disclaimer from './components/Disclaimer';
   import Chart from './components/Chart';
+
   import './assets/App.css';
   import countriesEnum from './enums';
   import axios from 'axios';

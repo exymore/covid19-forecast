@@ -12,6 +12,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'comma-dangle': ['error', 'always-multiline'],
     'no-unused-vars': 'off',
+    'no-undef': 'off',
     'vue/no-unused-vars': 'off',
     'vue/no-unused-components': 'off',
     'vue/component-tags-order': [
