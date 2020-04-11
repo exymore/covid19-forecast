@@ -2,6 +2,7 @@
     <div id="app">
         <div class="wrapper">
             <toolbar/>
+            <Progress :increasing="3" :stabilized="1"/>
             <Stats/>
             <Select/>
             <fill-data v-show="isStaleData"/>
@@ -18,6 +19,7 @@
   import Stats from './components/Stats';
   import Disclaimer from './components/Disclaimer';
   import Chart from './components/Chart';
+  import Progress from './components/Progress';
 
   import './assets/App.css';
   import countriesEnum from './enums';
@@ -32,6 +34,7 @@
       FillData,
       Disclaimer,
       Chart,
+      Progress,
     },
 
     data: () => ({
@@ -51,7 +54,10 @@
       async fetchCSVData() {
         if (this.country) {
           if (countriesEnum.find(country => country === this.country)) {
-            const { data } = await axios.get(`${process.env.VUE_APP_API_BASE_URI}/forecast?country=${this.country}`);
+            const { data } = await Promise.race([
+              axios.get(`${process.env.VUE_APP_API_BASE_URI}/forecast?country=${this.country}`),
+              axios.get(`${process.env.VUE_APP_STANDBY_API_BASE_URI}/forecast?country=${this.country}`),
+            ]);
             this.csvData = [...data];
           } else {
             //TODO: country missing

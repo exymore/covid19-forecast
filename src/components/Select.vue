@@ -7,16 +7,23 @@
             <span class="icon">
                 🌍
             </span>
-            <b-select placeholder="Country" v-model="country" rounded expanded>
-                <option :value="null">{{''}}</option>
-                <option v-for="country in countriesEnum" :key="country" :value="country">{{country}}</option>
-            </b-select>
+            <v-select label="Country" v-model="country" :clearable="false" :options="countriesEnum"
+                      class="select-component">
+                <template #no-options="">
+                    Такой страны не существует :(
+                </template>
+            </v-select>
         </b-field>
     </section>
 </template>
 
 <script>
   import countriesEnum from '../enums';
+  import Vue from 'vue';
+  import vSelect from 'vue-select';
+  import 'vue-select/dist/vue-select.css';
+
+  Vue.component('v-select', vSelect);
 
   export default {
     name: 'Select',
@@ -35,6 +42,20 @@
 </script>
 
 <style scoped>
+    .select-component >>> .vs__selected {
+        line-height: 1.5;
+        font-weight: 600;
+    }
+
+    .select-component >>> .vs__dropdown-menu {
+        line-height: 1.5;
+        font-weight: 600;
+    }
+
+    .select-component {
+        width: 100%;
+    }
+
     .field {
         flex-direction: row;
         display: flex;

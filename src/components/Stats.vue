@@ -1,7 +1,7 @@
 <template>
     <section v-if="isMobile" class="section">
         <h2 class="subtitle">
-            Статистика:
+            Мировая статистика:
         </h2>
         <b-button @click="hidden = !hidden" type="is-info" class="btn">{{ hidden? 'Показать':'Спрятать' }}</b-button>
 
