@@ -57,14 +57,13 @@
             position: 'outside top',
           },
           defaultPoint: {
-            tooltip: '%seriesName: %yValue',
+            tooltip: '%seriesName: <b>%yValue</b>',
             marker: {
               type: 'circle',
               size: 16,
-              outline: { color: 'white', width: 2 }
+              outline: { color: 'white', width: 1 }
             }
           },
-          defaultSeries: { shape_opacity: 0.5 },
           series: [
             {
               options: { emptyPointMode: 'default' },
@@ -84,11 +83,11 @@
                   value: this.getMaxInfections(this.csvData),
                   label: {
                     text:
-                      `Максимум заражённых: ${numeral(this.getMaxInfections(this.csvData)).format('0,0')}`,
+                      `Максимум заражённых: <b>${numeral(this.getMaxInfections(this.csvData)).format('0,0')}</b>`,
                     style_fontSize: 12,
                     align: 'center',
                   },
-                  color: ['#167df0', 1],
+                  color: ['#000290', 1],
                 },
               ],
             },
