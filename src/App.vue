@@ -5,7 +5,7 @@
             <Stats/>
             <Select/>
             <fill-data v-show="isStaleData"/>
-            <chart :csv-data="csvData" :country="country" v-if="csvData"/>
+            <chart :csv-data="csvData" :country="country" v-if="csvData && country"/>
         </div>
         <disclaimer/>
     </div>

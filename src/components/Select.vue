@@ -8,6 +8,7 @@
                 🌍
             </span>
             <b-select placeholder="Country" v-model="country" rounded expanded>
+                <option :value="null">{{''}}</option>
                 <option v-for="country in countriesEnum" :key="country" :value="country">{{country}}</option>
             </b-select>
         </b-field>
@@ -26,6 +27,8 @@
     watch: {
       country() {
         this.$parent.country = this.country;
+        if (!this.country)
+          this.$parent.csvData = null;
       },
     },
   };

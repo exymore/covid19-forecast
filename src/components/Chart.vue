@@ -46,7 +46,7 @@
           chart
             .axes('y')
             .markers(0)
-            .options({ label: { text: `Максимум заражённых: ${numeral(this.getMaxInfections(this.csvData)).format('0,0')}` } });
+            .options({ label: { text: `Максимум заражённых: <b>${numeral(this.getMaxInfections(this.csvData)).format('0,0')}</b>` } });
         },
 
         options: {
