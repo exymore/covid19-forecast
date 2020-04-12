@@ -2,12 +2,13 @@
     <div>
         <div class="div-section">
             <div :class="`placeholder ${isGrowthForCountryStabilized? 'stabilized' : 'increasing'}`">
-                <h1 class="caption">Рост количества заражённых {{isGrowthForCountryStabilized? 'стабилизировался' :
-                    'увеличивается'}}</h1>
-                <h1 class="caption">На сегодняшний день инфицировано {{getTodayInfectionsString()}} человек</h1>
-                <h1 class="caption">Ожидается
-                    {{`${getMaxInfectionsString()} ${getMaxInfectionsString().slice(-1) === '1' ?
-                    'заражённый' : 'заражённых'}`}} к {{lastDate}}</h1>
+                <h1 class="caption">{{growthString}}</h1>
+
+                <h1 class="caption">{{todayString}}</h1>
+
+                <h1 class="caption">{{tomorrowString}}</h1>
+
+                <h1 class="caption">{{maxString}}</h1>
             </div>
             <JSCharting :options="options" ref="chart" class="columnChart"></JSCharting>
         </div>
@@ -145,6 +146,21 @@
           day: 'numeric',
         });
       },
+      growthString() {
+        return `Скорость заражения ${this.isGrowthForCountryStabilized ? 'стабилизировалась' :
+          'увеличивается'}`;
+      },
+      todayString() {
+        return `На сегодняшний день зарегистрировано ${this.getTodayInfectionsString()} заболевших`
+      },
+      tomorrowString() {
+        return `Завтра ожидается ${this.getTomorrowInfectionsString()} ${this.getTomorrowInfectionsString().slice(-1) === '1' ?
+          'заражённый' : 'заражённых'}`
+      },
+      maxString() {
+        return `Ожидается ${this.getMaxInfectionsString()} ${this.getMaxInfectionsString().slice(-1) === '1' ?
+          'заражённый' : 'заражённых'} к ${this.lastDate}`
+      }
     },
     methods: {
       getActualData() {
@@ -176,6 +192,10 @@
       getTodayInfectionsString() {
         const filtered = this.csvData.filter(el => el.y);
         return numeral(filtered[filtered.length - 1].y).format('0,0');
+      },
+      getTomorrowInfectionsString() {
+        const tomorrow = this.csvData.find(el => (el.y === null));
+        return numeral(tomorrow.yhat_upper).format('0,0');
       },
     },
   };
