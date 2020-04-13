@@ -3,11 +3,8 @@
         <div class="div-section">
             <div :class="`placeholder ${isGrowthForCountryStabilized? 'stabilized' : 'increasing'}`">
                 <h1 class="caption">{{growthString}}</h1>
-
                 <h1 class="caption">{{todayString}}</h1>
-
                 <h1 class="caption">{{tomorrowString}}</h1>
-
                 <h1 class="caption">{{maxString}}</h1>
             </div>
             <JSCharting :options="options" ref="chart" class="columnChart"></JSCharting>
@@ -47,7 +44,7 @@
             series: [
               {
                 options: { emptyPointMode: 'default' },
-                name: 'Инфицировано',
+                name: 'Заражённых',
                 points: this.getActualData(),
               },
               {
@@ -84,7 +81,7 @@
           series: [
             {
               options: { emptyPointMode: 'default' },
-              name: 'Инфицировано',
+              name: 'Заражённых',
               points: this.getActualData(),
             },
             {
@@ -151,16 +148,17 @@
           'увеличивается'}`;
       },
       todayString() {
-        return `На сегодняшний день зарегистрировано ${this.getTodayInfectionsString()} заболевших`
+        return `На сегодняшний день зарегистрировано ${this.getTodayInfectionsString()}
+        ${this.getTodayInfectionsString().slice(-1) === '1' ? 'заражённый' : 'заражённых'}`;
       },
       tomorrowString() {
         return `Завтра ожидается ${this.getTomorrowInfectionsString()} ${this.getTomorrowInfectionsString().slice(-1) === '1' ?
-          'заражённый' : 'заражённых'}`
+          'заражённый' : 'заражённых'}`;
       },
       maxString() {
         return `Ожидается ${this.getMaxInfectionsString()} ${this.getMaxInfectionsString().slice(-1) === '1' ?
-          'заражённый' : 'заражённых'} к ${this.lastDate}`
-      }
+          'заражённый' : 'заражённых'} к ${this.lastDate}`;
+      },
     },
     methods: {
       getActualData() {

@@ -1,12 +1,12 @@
 <template>
     <section class="section">
         <h2 class="subtitle">
-            Статистика темпов эпидемии
+            Темпы эпидемии:
         </h2>
         <div class="progress-wrapper">
             <div class="progress-bar increasing" :style="{width: `${getPercents(increasing)}%`}">
                 <h2 class="label-caption-desktop">
-                    Растёт в {{this.increasing}} {{this.increasing === 1? 'странe' : 'странах'}}
+                    Растёт в {{this.increasing}} {{this.increasing % 10 === 1? 'странe' : 'странах'}}
                 </h2>
                 <h2 class="label-caption-mobile">
                     ⬆️ {{this.increasing}}
@@ -14,7 +14,7 @@
             </div>
             <div class="progress-bar stabilized" :style="{width: `${getPercents(stabilized)}%`}">
                 <h2 class="label-caption-desktop">
-                    Стабилизировалась в {{this.stabilized}} {{this.stabilized === 1? 'странe' : 'странах'}}
+                    Стабилизировалась в {{this.stabilized}} {{this.stabilized % 10 === 1? 'странe' : 'странах'}}
                 </h2>
                 <h2 class="label-caption-mobile">
                     ➡️ {{this.stabilized}}
@@ -93,7 +93,7 @@
         flex-wrap: wrap;
         word-break: break-all;
         text-align: center;
-
+        min-width: 130px;
         width: 50%;
         height: 60px;
     }
@@ -115,6 +115,7 @@
     @media (max-width: 960px) {
         .progress-bar {
             height: 50px;
+            min-width: 70px;
         }
 
         .label-caption-desktop {
@@ -122,6 +123,7 @@
         }
 
         .label-caption-mobile {
+            font-size: 1rem!important;
             display: flex;
         }
     }
