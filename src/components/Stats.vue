@@ -108,7 +108,7 @@
     },
     methods: {
       async fetchData() {
-        const { data } = await axios.get('https://corona.lmao.ninja/all');
+        const { data } = await axios.get('https://corona.lmao.ninja/v2/all');
         this.data = data;
       },
     },
