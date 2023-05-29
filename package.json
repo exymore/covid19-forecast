@@ -9,7 +9,7 @@
     "start": "vue-cli-service start"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "0.21.2",
     "buefy": "^0.8.15",
     "core-js": "^3.6.4",
     "eslint-loader": "^4.0.0",

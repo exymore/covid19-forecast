@@ -15,12 +15,6 @@
                         <div class="covid-emoji">🦠</div>
                     </a>
                 </b-button>
-                <b-button class="external-button">
-                    <a href="https://molamola.by/campaigns?sort=popular&category_id=10" target="_blank" rel="noopener noreferrer"
-                       class="external-link">
-                        <div class="covid-emoji">💵</div>
-                    </a>
-                </b-button>
             </b-navbar-item>
         </template>
     </b-navbar>
